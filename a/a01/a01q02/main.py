@@ -1,3 +1,7 @@
+# File: main.py
+# Directory: ciss450/a/a01/a01q02
+# Author: Carl Dalebout
+
 def find_(list = None):
     for i, char in enumerate(list):
         if char == ' ':

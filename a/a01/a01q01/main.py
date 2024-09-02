@@ -1,4 +1,5 @@
 # File: main.py
+# Directory: ciss450/a/a01/a01q01
 # Author: Carl Dalebout
 
 def matrix(n, s, separator=","):
@@ -35,6 +36,8 @@ if __name__ == '__main__':
     separator = input() # for instance enter "," (without quotes)
                         # or enter "" (without quotes) for default case
     if separator == '':
-        print(matrix(n, s))
+        m = matrix(n, s)
     else:
-        print(matrix(n, s, separator))
+        m = matrix(n, s, separator)
+
+    print(m)
