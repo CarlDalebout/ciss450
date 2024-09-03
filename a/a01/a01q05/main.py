@@ -9,7 +9,7 @@ def chars(s = None):
 
     for char in s:
         match char:
-            case '0':
+            case '0':       
                 char_list['0'] = char_list.get('0', 0) + 1
                 char_list[' '] += 1
             case '1':
@@ -205,17 +205,17 @@ def chars(s = None):
     
 def print_char_list(char_list):
     
-    for i in range(48, 58):
+    for i in range(48, 58): # print 0-9
         
         if chr(i) in char_list:
             print(f"{chr(i)} {char_list.get(chr(i), 1)} {char_list.get(chr(i))/char_list.get(' ', 1)}")
     
-    for i in range(65, 91):
+    for i in range(65, 91): # print A-Z
         
         if chr(i) in char_list:
             print(f"{chr(i)} {char_list.get(chr(i), 1)} {char_list.get(chr(i))/char_list.get(' ', 1)}")
     
-    for i in range(97, 123):
+    for i in range(97, 123): # print a-z
         
         if chr(i) in char_list:
             print(f"{chr(i)} {char_list.get(chr(i), 1)} {char_list.get(chr(i))/char_list.get(' ', 1)}")
@@ -234,6 +234,8 @@ if __name__ == '__main__':
     s = requests.get(target).text
     # s = "Abc,,,,,,abc?????"
     char_list = chars(s=s)
+
+    print(char_list.get(' ', 1))
 
     print_char_list(char_list)
     print()
