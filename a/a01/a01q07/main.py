@@ -7,12 +7,15 @@ def floatrange(start = None, end = None, itorator = None):
     ret = []
     
     if end == None and itorator == None:
-        for i in range(start):
+        i = 0.0
+        while i < start:
             ret.append(float(i))
+            i += 1.0
     
     elif itorator == None:
-        for i in range(start, end):
-            ret.append(float(i))
+        while start < end:
+            ret.append(float(start))
+            start += 1.0
 
     else:
         while start < end:
@@ -23,10 +26,15 @@ def floatrange(start = None, end = None, itorator = None):
 
 if __name__ == '__main__':
     
-    print(floatrange(5))            #returns [0.0, 1.0, 2.0, 3.0, 4.0]
-    print(floatrange(2, 5))         #returns [2.0, 3.0, 4.0]
-    print(floatrange(1, 1))         #returns []
-    print(floatrange(1, 2, 1))      #returns [1.0]
-    print(floatrange(1, 2, 0.5))    #returns [1.0, 1.5]
-    print(floatrange(1, 2, 1.5))    #returns [1.0]
-    print(floatrange(-2, 2, 0.5))   #returns [-2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5]
+    a = float(input())
+    b = input() # enter "" (w/o quotes) for default b and c
+    c = input() # enter "" (w/o quotes) for default c
+    if b == '':
+        print(floatrange(start=a))
+    else:
+        b = float(b)
+        if c == '':
+            print(floatrange(start=a, end=b))
+        else:
+            c = float(c)
+            print(floatrange(start=a, end=b, itorator=c))
