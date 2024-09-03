@@ -3,8 +3,23 @@
 # Author: Carl Dalebout
 
 def floatrange(start = None, end = None, itorator = None):
+    
+    ret = []
+    
+    if end == None and itorator == None:
+        for i in range(start):
+            ret.append(float(i))
+    
+    elif itorator == None:
+        for i in range(start, end):
+            ret.append(float(i))
 
-    pass    
+    else:
+        while start < end:
+            ret.append(float(start))
+            start += itorator
+            
+    return ret
 
 if __name__ == '__main__':
     
