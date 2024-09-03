@@ -8,7 +8,6 @@ def chars(s = None):
     char_list = {' ': 0}
 
     for char in s:
-        # print(char)
         match char:
             case '0':
                 char_list['0'] = char_list.get('0', 0) + 1
@@ -205,30 +204,28 @@ def chars(s = None):
     return char_list
     
 def print_char_list(char_list):
+    
     for i in range(48, 58):
+        
         if chr(i) in char_list:
             print(f"{chr(i)} {char_list.get(chr(i), 1)} {char_list.get(chr(i))/char_list.get(' ', 1)}")
+    
     for i in range(65, 91):
+        
         if chr(i) in char_list:
             print(f"{chr(i)} {char_list.get(chr(i), 1)} {char_list.get(chr(i))/char_list.get(' ', 1)}")
+    
     for i in range(97, 123):
+        
         if chr(i) in char_list:
             print(f"{chr(i)} {char_list.get(chr(i), 1)} {char_list.get(chr(i))/char_list.get(' ', 1)}")
 
 def print_char_list_accending(char_list):
+    
     for i in char_list:
+        
         if i != ' ':
             print(f"{i} {char_list.get(i, 1)} {char_list.get(i, 1)/char_list.get(' ', 1)}")
-
-    # for i in range(48, 58):
-    #     if chr(i) in char_list:
-    #         print(f"{chr(i)}: {char_list.get(chr(i))/char_list.get(' ', 1)}")
-    # for i in range(65, 91):
-    #     if chr(i) in char_list:
-    #         print(f"{chr(i)}: {char_list.get(chr(i))/char_list.get(' ', 1)}")
-    # for i in range(97, 123):
-    #     if chr(i) in char_list:
-    #         print(f"{chr(i)}: {char_list.get(chr(i))/char_list.get(' ', 1)}")
 
 if __name__ == '__main__':
     
