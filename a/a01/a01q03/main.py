@@ -82,6 +82,7 @@ def move2(direction = None, list = None, target = ' '):
         return list
 
 if __name__ == '__main__':
+    
     direction = input("direction: ") # for instance enter "N" (w/o quotes)
     s = input("list: ")         # for instance enter "1,2,3,4,5,6,7, ,8" (w/o
                         # quotes)
