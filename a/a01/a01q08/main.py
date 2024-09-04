@@ -1,5 +1,5 @@
 # File: main.py
-# Directory: ciss450/a/a01/a01q07
+# Directory: ciss450/a/a01/a01q08
 # Author: Carl Dalebout
 
 def matrix(n, s, separator=","):
