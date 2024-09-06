@@ -2,10 +2,6 @@
 # Directory: ciss450/a/a01/a01q09
 # Author: Carl Dalebout
 
-
-
-
-
 def mergesort(xs, verbose = False):
     """Merge sort algorithm implementation."""
 
