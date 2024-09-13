@@ -2,7 +2,6 @@
 # Dir:  a02/a02q01
 # Author: Carl Dalebout
 
-
 class DLNode:
     def __init__(self, value=None, next=None, prev=None,
                                               is_sentinel=False):
@@ -24,17 +23,18 @@ class DLNode:
     next = property(get_next, set_next)
 
     def get_prev(self):
-        # ***** TO BE COMPLETED *****
-        pass
+        return self.__prev
     
     def set_prev(self, prev):
-        # ***** TO BE COMPLETE *****
-        pass
+        self.__prev = prev
     
     prev = property(get_prev, set_prev)
 
     def get_value(self):
         return self.__value
+    
+    def set_value(self, value):
+        self.__value = value
     
     value = property(get_value)
 
@@ -57,4 +57,4 @@ class DLNode:
     def __eq__(self, node):
         # ***** TO BE COMPLETED *****
         # Returns true if self.__value and node.__value are the same
-        pass
+        return (self.__value == node.__value)
