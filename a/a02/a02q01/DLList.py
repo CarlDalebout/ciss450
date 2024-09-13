@@ -26,10 +26,15 @@ class DLList:
         self.__empty = False
 
     def delete_head(self):
+        if self.__size == 0:
+            return None
         temp = self.head.next
         self.head.next = temp.next
         temp.next.prev = self.head
+        ret = temp.value
         del temp
+        self.__size -= 1
+        return ret
 
     head = property(get_head, insert_head, delete_head)
 
@@ -45,10 +50,15 @@ class DLList:
         self.__empty = False
 
     def delete_tail(self):
+        if self.__size == 0:
+            return None
         temp = self.tail.prev
         self.tail.prev = temp.prev
         temp.prev.next = self.tail
+        ret = temp.value
         del temp
+        self.__size -= 1
+        return ret
 
     tail = property(get_tail, insert_tail, delete_tail)
 
@@ -91,5 +101,29 @@ class DLList:
         return ret
     
     def __eq__(self, DLList):
-        # WIP
-        pass
+        if len(DLList) != self.__size:
+            return False
+        
+        else:
+            temp1 = self.head.next
+            temp2 = DLList.head.next
+        
+            for i in range(self.__size):
+                if temp1 != temp2:
+                    return False
+                temp1 = temp1.next
+                temp2 = temp2.next
+        
+        return True
+        
+    def get_list(self):
+        temp = self.head.next
+        ret = []
+        for i in range(self.__size):
+            ret.append(temp.value)
+            temp = temp.next
+        return ret
+    
+    def insert_before(self, key, node):
+    
+    def insert_after(self, key, node):
