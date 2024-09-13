@@ -13,5 +13,5 @@ if __name__ == '__main__':
     b = DLList.DLList(ys)
 
     print(len(a))
-    print(a)
+    print(a.head)
     print(a.get_list())

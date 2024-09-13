@@ -4,8 +4,6 @@
 
 import DLNode as Node
 
-
-
 class DLList:
     def __init__(self):
         self.__head = Node.DLNode(prev=None, is_sentinel= True)
@@ -15,7 +13,9 @@ class DLList:
         self.__empty = True
 
     def get_head(self):
-        return self.__head
+        if self.__empty:
+            return None
+        return self.__head.next.value
     
     def insert_head(self, node):
         self.__head.next.prev = node
@@ -39,8 +39,10 @@ class DLList:
     head = property(get_head, insert_head, delete_head)
 
     def get_tail(self):
-        return self.__tail
-    
+        if self.__empty:
+            return None
+        return self.__tail.prev.value
+
     def insert_tail(self, node):
         self.__tail.prev.next = node
         node.next = self.tail
@@ -125,5 +127,7 @@ class DLList:
         return ret
     
     def insert_before(self, key, node):
-    
+        pass
+
     def insert_after(self, key, node):
+        pass
