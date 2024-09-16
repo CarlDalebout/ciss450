@@ -1,0 +1,10 @@
+run:
+	python Agent.py
+
+
+clean:
+	find . -name '*.pyc' -exec rm -v {} \;
+
+c:
+	find . -name '*.pyc' -exec rm -v {} \;
+
