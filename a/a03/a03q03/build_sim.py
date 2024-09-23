@@ -20,8 +20,8 @@ from vacuum_cleaner.brain.ModelBasedReflexVacuumCleanerRobotBrain \
      import ModelBasedReflexVacuumCleanerRobotBrain
 from vacuum_cleaner.Room import Room
 from vacuum_cleaner.Clock import Clock
-from VacuumCleanerRobotEnvironment import VacuumCleanerRobotEnvironment
-from simulator.DiscreteSimulator import DiscreteSimulator
+from vacuum_cleaner.VacuumCleanerRobotEnvironment import VacuumCleanerRobotEnvironment
+from ai.simulator.DiscreteSimulator import DiscreteSimulator
 import Agent
 
 def build_sim(steps,
