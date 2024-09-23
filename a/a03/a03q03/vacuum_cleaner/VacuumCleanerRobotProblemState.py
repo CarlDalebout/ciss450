@@ -11,6 +11,7 @@ class VacuumCleanerRobotProblemState(State):
         # b is a RoomState
         State.__init__(self, value)
         VacuumCleanerRobotProblemState.check(value)
+        self.value = value
         
     @staticmethod
     def check(value):
@@ -35,9 +36,11 @@ class VacuumCleanerRobotProblemState(State):
             return VacuumCleanerRobotProblemState((agent_state, \
                                                    new_room_state))
         elif action == 'Left':
+            print(f"\n\n\n{self.value}\n\n\n")
             new_agent_state = VacuumCleanerRobotState('A')
             return VacuumCleanerRobotProblemState((new_agent_state, \
                                                    room_state))
         elif action == 'Right': 
+            print(f"\n\n\n{self.value}\n\n\n")
             new_agent_state = VacuumCleanerRobotState('B')
             return VacuumCleanerRobotProblemState((new_agent_state, room_state))

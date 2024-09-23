@@ -1,9 +1,9 @@
 import sys; sys.path.append('../ai/')
-import ai.agent.State 
+import agent.State 
 
-class RoomState(ai.agent.State.State):
+class RoomState(agent.State.State):
     def __init__(self, value):
-        ai.agent.State.State.__init__(self, value)
+        agent.State.State.__init__(self, value)
         RoomState.check(value)
         
     @staticmethod

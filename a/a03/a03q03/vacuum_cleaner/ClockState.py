@@ -1,10 +1,10 @@
 import sys;
 sys.path.append('../ai')
-import ai.agent.State
+import agent.State
 
-class ClockState(ai.agent.State.State):
+class ClockState(agent.State.State):
     def __init__(self, value):
-        ai.agent.State.State.__init__(self, value)
+        agent.State.State.__init__(self, value)
         ClockState.check(value)
         
     @staticmethod
