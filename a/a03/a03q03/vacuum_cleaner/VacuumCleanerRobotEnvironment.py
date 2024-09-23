@@ -42,6 +42,7 @@ class VacuumCleanerRobotEnvironment(agent.Environment.Environment):
 
         # Compute new problem state
         problem = VacuumCleanerRobotProblem()
+        print(f"\n\n\n{agent.state}\n\n\n")
         problem_state = VacuumCleanerRobotProblemState((agent.state, \
                                                         room.state))
         new_problem_state = problem.result(problem_state, action)
