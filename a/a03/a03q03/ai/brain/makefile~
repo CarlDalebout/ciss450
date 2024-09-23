@@ -1,0 +1,6 @@
+run:
+	python Brain.py
+	python RandomBrain.py
+
+clean:
+	rm *.pyc

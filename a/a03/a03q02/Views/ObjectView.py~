@@ -1,0 +1,47 @@
+from Agent import Agent
+from Room import Room
+
+class ObjectView:
+    def __init__(self, object):
+        self.object = object
+
+class ObjectTextView(ObjectView):
+    def __init__(self, object):
+        ObjectView.__init__(self, object)    
+    def run(self):
+        name = self.object.name
+        print "name:", name
+        print "self.object.state:", self.object.state
+        state = self.object.state.value
+        return "%s:%s" % (name, state)
+
+class ObjectGUIView:
+    pass
+
+class AgentView(ObjectView):
+    def __init__(self, agent):
+        ObjectView.__init__(self, agent)
+
+class AgentTextView(ObjectTextView):
+    def __init__(self, agent):
+        # Does not have to subclass AgentView
+        # In fact only ObjectView, ObjectText are necessary
+        # for now. # But note that Agents act which makes their
+        # views different from room.
+        ObjectTextView.__init__(self, agent)
+
+
+class RoomView(ObjectView):
+    def __init__(self, room):
+        ObjectView.__init__(self, room)
+
+
+class RoomTextView(ObjectTextView):
+    def __init__(self, room):
+        ObjectTextView.__init__(self, room)
+    
+
+class ClockTextView(ObjectTextView):
+    def __init__(self, clock):
+        ObjectTextView.__init__(self, clock)
+        

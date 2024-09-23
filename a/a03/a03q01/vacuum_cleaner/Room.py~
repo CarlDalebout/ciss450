@@ -1,0 +1,13 @@
+import sys; sys.path.append('../ai/')
+from basic.Object import Object
+
+from RoomState import RoomState
+class Room(Object):
+    def __init__(self, name, state):
+        Object.__init__(self,
+                        name=name,
+                        state=RoomState(state))
+
+if __name__ == '__main__':
+    r = Room('A', 'Dirty')
+    print r

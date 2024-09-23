@@ -1,0 +1,56 @@
+class Object(object):
+    '''
+Base class for objects with names and states.
+
+Objects in the system must have unique names.
+    '''
+    
+    names = set()
+
+    def __init__(self,
+                 name='',
+                 state=None):
+        if name in Object.names:
+            raise ValueError('An object with name "%s" already exists.' % name)
+        Object.names.add(name)
+        self.__name = name
+        self.__state = state
+        
+    #--------------------------------------------------------------------------
+    # name property
+    #--------------------------------------------------------------------------
+    def get_name(self):
+        return self.__name
+    def set_name(self, name):
+        """ WARNING: This is dangerous. """
+        self.__name = name
+    name = property(get_name, set_name)
+    
+    #--------------------------------------------------------------------------
+    # state property
+    #--------------------------------------------------------------------------
+    def get_state(self):
+        return self.__state
+    def set_state(self, state):
+        self.__state = state
+    state = property(get_state, set_state)
+    
+    def __str__(self):
+        return self.__name
+
+    def __repr__(self):
+        return "<Object %s name:%s state:%s>" % \
+               (id(self), self.name, self.state) 
+    
+if __name__ == '__main__':
+    chair1 = Object('chair A')
+    print chair1
+    print repr(chair1)
+    print chair1.name
+    chair1.name = 'chair 0'
+    print chair1
+
+    try:
+        chair2 = Object('chair A')
+    except ValueError:
+        print "pass"

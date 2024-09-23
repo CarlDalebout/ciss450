@@ -1,0 +1,45 @@
+import sys; sys.path.append('../')
+from  ai.basic.Object import Object 
+import ClockState
+
+#print "ClockState:", ClockState
+#print "ClockState.ClockState:", ClockState.ClockState
+
+class Clock(Object):
+    def __init__(self, maxtime=None, timeslice=1):
+        Object.__init__(self,
+                        name='clock',
+                        state=ClockState.ClockState(0))
+        self.__timeslice = timeslice
+        self.__maxtime = maxtime
+        
+    def run(self):
+        if self.__maxtime == None or self.time < self.__maxtime:
+            self.state.value = self.state.value + self.timeslice
+
+    def stopped(self):
+        return self.state.value >= self.__maxtime
+
+    #=======================================================================
+    # time property
+    #=======================================================================
+    def get_time(self):
+        return self.state.value
+    def set_time(self, time):
+        self.state.value = time
+    time = property(get_time, set_time)
+    
+    #=======================================================================
+    # timeslice property
+    #=======================================================================
+    def get_timeslice(self):
+        return self.__timeslice
+    def set_timeslice(self, v):
+        self.__timeslice = v
+    timeslice = property(get_timeslice, set_timeslice)
+
+    def get_maxtime(self):
+        return self.maxtime
+    
+if __name__ == '__main__':
+    clock = Clock()
