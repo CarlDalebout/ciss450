@@ -50,10 +50,10 @@ class VacuumRobotEnvironment(Environment):
         if action == 'Suck':
             location = self.state['agent'][id(agent)]['location']
             self.state['room'][location] = 'Clean'
-        elif action == 'Left':
-            self.state['agent'][id(agent)]['location'] = 'A'
-        elif action == 'Right':
-            self.state['agent'][id(agent)]['location'] = 'B'
+        elif action == 'Left' and self.state['agent'][id(agent)]['location'] != ROOMS[0]:
+            self.state['agent'][id(agent)]['location'] = str(ord(self.state['agent'][id(agent)]['location']) - 1) #current room minus one
+        elif action == 'Right' and self.state['agent'][id(agent)]['location'] != ROOMS[-1]:
+            self.state['agent'][id(agent)]['location'] = str(ord(self.state['agent'][id(agent)]['location']) + 1) #current room minus one
 
     def __repr__(self):
         xs = []

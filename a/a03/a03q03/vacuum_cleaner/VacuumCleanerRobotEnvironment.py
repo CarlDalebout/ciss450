@@ -39,7 +39,7 @@ class VacuumCleanerRobotEnvironment(agent.Environment.Environment):
 
     def act(self, agent, action):
         room = self.room_relation(agent)
-
+        
         # Compute new problem state
         problem = VacuumCleanerRobotProblem()
         print(f"\n\n\n{agent.state}\n\n\n")
