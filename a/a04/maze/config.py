@@ -31,7 +31,7 @@ X,Y = 0,0                   # relative top-left for whole maze
 BOT_RADIUS = (CELLWIDTH - WALLWIDTH) // 2 - 1
 if BOT_RADIUS < 2:
     BOT_RADIUS = 2
-SPEED = 8                   # If too large, will fail tolerance test.
+SPEED = 15                   # If too large, will fail tolerance test.
 BOT_COLOR = (0, 0, 0)
 
 #==============================================================================

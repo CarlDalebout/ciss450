@@ -87,9 +87,9 @@ problem = MazeProblem(maze=maze,
                       goal_states=[(r1,c1)])
 
 if search == 'bfs':
-    fringe = Fringe()
+    fringe = Queue()
 elif search == 'dfs':
-    fringe = Fringe()
+    fringe = Stack()
 else:
     raise Exception('invalid search')
 
@@ -117,7 +117,7 @@ else:
     maze = problem.maze
     (r, c) = initial_state
     path = [initial_state]
-    for action in solution:
+    for action in solution: # this is where the fringe, closed list, and problem is ran
         (r, c) = maze.get_adj_tuple((r, c), action)
         path.append((r, c))
         print("path: %s" % path)

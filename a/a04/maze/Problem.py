@@ -54,3 +54,6 @@ class MazeProblem(Problem):
         dirs = self.actions(state)
         return [(d, self.result(state, d)) for d in dirs]
 
+if __name__ == "__main__":
+    test = MazeProblem("test", (2,3), (42, 42))
+    print(test.get_initial_state)

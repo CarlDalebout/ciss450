@@ -26,8 +26,8 @@ def graph_search(problem=None,
     
     while 1:
                 
-        (r, c) = (0, 0)
         maze = problem.maze
+        (r, c) = maze.get_initial_state
         for action in solution:
             (r, c) = maze.get_adj_tuple((r, c), action)
         dirs = maze.get_directions((r, c))

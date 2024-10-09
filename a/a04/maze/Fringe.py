@@ -63,6 +63,32 @@ class Stack(Fringe):
     def __iter__(self):
         return iter(self.deque)
 
+class FSStack(Fringe):
+    def __init__(self):
+        Fringe.__init__(self)
+        self.stack = collections.deque()
+        self.set = set()
+    def put(self, node):
+        if node.state not in self.set:
+            # print ('\"' + str(node.state) + '\"')
+            self.set.add(str(node.state))
+            self.stack.append(node)
+    def get(self):
+        ret = self.stack.pop()
+        # print(f"!!!{ret.state}!!! {type(ret.state)}")
+        self.set.remove(str(ret.state))
+        return ret
+    def __len__(self):
+        return len(self.stack)
+    def size(self):
+        return len(self.stack)
+    def __contains__(self, node):
+        return str(node.state) in self.set
+    def __str__(self):
+        s = str(self.stack)[7:-2]
+        return '<Stack [%s]>' % s
+    def __iter__(self):
+        return iter(self.stack)
     
 class Queue(Fringe):
     def __init__(self):
@@ -86,32 +112,38 @@ class Queue(Fringe):
         return '<Queue [%s]>' % s
     def __iter__(self):
         return iter(self.deque)
-
-
-class FSStack(Fringe):
-    def __init__(self):
-        Fringe.__init__(self)
-        self.stack = Stack()
-        self.set = {}
-    def __iter__(self):
-        return iter(self.stack)
-
     
 class FSQueue(Fringe):
     def __init__(self):
         Fringe.__init__(self)
-        self.queue = Queue()
-        self.set = {}
+        self.queue = collections.deque()
+        self.set = set()
+    def put(self, node):
+        if node.state not in self.set:
+            # print ('\"' + str(node.state) + '\"')
+            self.set.add(str(node.state))
+            self.queue.append(node)
+    def get(self):
+        ret = self.queue.popleft()
+        # print(f"!!!{ret.state}!!! {type(ret.state)}")
+        self.set.remove(str(ret.state))
+        return ret
+    def __len__(self):
+        return len(self.queue)
+    def size(self):
+        return len(self.queue)
+    def __contains__(self, node):
+        return str(node.state) in self.set
+    def __str__(self):
+        s = str(self.queue)[7:-2]
+        return '<queue [%s]>' % s
     def __iter__(self):
         return iter(self.queue)
 
-
-
-
 if __name__ == '__main__':
     from SearchNode import SearchNode
-    print("Testing stackfringe with search nodes from (0,0) -> (1,0) -> (1,1) by actions ['E', 'S']")
-    fringe = Stack()
+    print("Testing fringe with search nodes from (0,0) -> (1,0) -> (1,1) by actions ['E', 'S']")
+    fringe = FSQueue()
     state00 = (0, 0)
     node00 = SearchNode(state00)
     state01 = (0, 1)
@@ -121,24 +153,28 @@ if __name__ == '__main__':
     print(node00)
     print(node01)
     print(node11)
+    print()
 
     print(fringe)
     fringe.put(node00)
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
     
     print(fringe)
     fringe.put(node01)
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
 
     print(fringe)
     fringe.put(node11)
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
 
     print(fringe)
     n = fringe.get()
@@ -146,6 +182,7 @@ if __name__ == '__main__':
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
 
     print(fringe)
     n = fringe.get()
@@ -153,6 +190,7 @@ if __name__ == '__main__':
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
     
     print(fringe)
     n = fringe.get()
@@ -160,6 +198,7 @@ if __name__ == '__main__':
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
 
     print(fringe)
     try:    
@@ -170,4 +209,5 @@ if __name__ == '__main__':
     print(node00 in fringe)
     print(node01 in fringe)
     print(node11 in fringe)
+    print()
     

@@ -18,7 +18,6 @@ The following are two subclasses of CloseList:
 Note that the values() method is actually not used in the graph search
 algorithm. It is included here only because it is used in the graphical
 animation. If this returns a list, then it is very memory inefficient.
-
 """
 
 class ClosedList(object):
@@ -47,6 +46,10 @@ class ClosedList(object):
 class DummyClosedList(ClosedList):
     def __init__(self):
         ClosedList.__init__(self)
+    def put(self, x):
+        return
+    def __contains__(self, x):
+        return False
     def __len__(self):
         return 0
     def __str__(self):
@@ -60,10 +63,21 @@ class SetClosedList(ClosedList):
     def __init__(self):
         ClosedList.__init__(self)
         self.xs = set()
+    def put(self, node):
+        if node not in self.xs:
+            self.xs.add(node)
+    def __contains__(self, x):
+        return x in self.xs
     def __str__(self):
-        return "<SetClosedList {}>"
+        return f"<SetClosedList {self.xs}>"
     def values(self):
         return self.xs
+    def size(self):
+        return len(self.xs)
+    def __len__(self):
+        return len(self.xs)
+    def clear(self):
+        self.xs.clear()
 
 if __name__ == '__main__':
     closed = SetClosedList()
