@@ -15,6 +15,7 @@ from Bot import RandomBot
 from view import View
 from view import EdgeView
 from graph_search import graph_search
+from SearchNode import SearchNode
 
 seed = int(input("enter random seed: "))
 random.seed(seed)
@@ -87,19 +88,20 @@ problem = MazeProblem(maze=maze,
                       goal_states=[(r1,c1)])
 
 if search == 'bfs':
-    fringe = Queue()
+    fringe = FSQueue()
 elif search == 'dfs':
-    fringe = Stack()
+    fringe = FSStack()
 else:
     raise Exception('invalid search')
 
 print("close animation window to halt", flush=True)
 closed_list = SetClosedList()
 solution = graph_search(problem=problem,
+                        Node = initial_state,
                         fringe=fringe,
                         closed_list=closed_list,
                         view0=view0)
-
+stop = input("pause")
 #==============================================================================
 # DO NOT CHANGE ANYTHING IN THIS SECTION.
 #==============================================================================

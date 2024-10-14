@@ -71,12 +71,12 @@ class FSStack(Fringe):
     def put(self, node):
         if node.state not in self.set:
             # print ('\"' + str(node.state) + '\"')
-            self.set.add(str(node.state))
+            self.set.add(node.state)
             self.stack.append(node)
     def get(self):
         ret = self.stack.pop()
         # print(f"!!!{ret.state}!!! {type(ret.state)}")
-        self.set.remove(str(ret.state))
+        self.set.remove(ret.state)
         return ret
     def __len__(self):
         return len(self.stack)

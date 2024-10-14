@@ -40,6 +40,7 @@ class MazeProblem(Problem):
         Problem.__init__(self, initial_state)
         self.maze = maze
         self.goal_states = goal_states
+        self.initial_state = initial_state
 
     def goal_test(self, state):
         return state in self.goal_states
