@@ -101,7 +101,7 @@ solution = graph_search(problem=problem,
                         fringe=fringe,
                         closed_list=closed_list,
                         view0=view0)
-stop = input("pause")
+
 #==============================================================================
 # DO NOT CHANGE ANYTHING IN THIS SECTION.
 #==============================================================================

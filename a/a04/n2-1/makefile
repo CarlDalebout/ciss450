@@ -1,2 +1,2 @@
 run:
-	python animation.py
+	python main.py

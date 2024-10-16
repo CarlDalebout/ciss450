@@ -11,13 +11,13 @@
 # COLS = 80
 # CELLWIDTH = 16
 #==============================================================================
-ROWS = 20                  # number of rows in maze
-COLS = 20                  # number of columns in maze
+ROWS = 80                  # number of rows in maze
+COLS = 160                  # number of columns in maze
 
 PUNCHES = (ROWS * COLS) * 0.1   # number of punches in wall after maze is generated
                            # (to create loops).
                          
-CELLWIDTH = 32             # assume each cell is a square
+CELLWIDTH = 8             # assume each cell is a square
 
 WALLWIDTH =  CELLWIDTH // 8 # Approximately CELLWIDTH/8
 if WALLWIDTH <= 1:
@@ -43,4 +43,4 @@ PATH_LINEWIDTH = CELLWIDTH // 4
 #==============================================================================
 # ANIMATION
 #==============================================================================
-DELAY = 2
+DELAY = 1
