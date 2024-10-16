@@ -41,21 +41,21 @@ def graph_search(problem=None,
         if view0:
             view0['maze'].background[node.state] = (255, 0, 0)
         if node.state == problem.goal_states[0]: # if node is what we are looking for
-            if view0:
-                view0['maze'].background[problem.goal_states[0]] = (0, 0, 255)
             print(f"found the end {node}")
             solution.append(node.action)
             parent = node
-            while parent != None:
+            while parent.parent != None:
                 solution.append(parent.parent_action)
                 parent = parent.parent
-            solution.pop()
+                print(parent.state, parent.parent_action)
             solution.pop()
             print(solution)
             return solution
         dir = maze.get_directions(node.state) # get all adjacent Edges
+        print(node.state, dir)
         for xd in dir:
-            temp = SearchNode(maze.get_adj_tuple(node.state, xd), xd, node, node.action, (node.path_cost + 1))
+            temp = SearchNode(maze.get_adj_tuple(node.state, xd),node, xd, (node.path_cost + 1))
+            print(f"adding {temp}")
             # print(temp.state, xd)
             if temp.state not in closed_list:
                 closed_list.put(temp.state)

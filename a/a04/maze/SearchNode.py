@@ -13,10 +13,12 @@ class SearchNode:
         self.path_cost = path_cost
 
     def __str__(self):
-        return '<SearchNode %s %s %s %s %s>' % (id(self),
+        return '<SearchNode %s %s %s %s %s %s %s>' % (id(self),
                                                 self.state,
                                                 id(self.parent),
+                                                self.parent.state,
                                                 id(self.parent_action),
+                                                self.parent_action,
                                                 self.path_cost)
     def solution(self):
         pass
