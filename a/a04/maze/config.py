@@ -11,13 +11,13 @@
 # COLS = 80
 # CELLWIDTH = 16
 #==============================================================================
-ROWS = 80                  # number of rows in maze
-COLS = 160                  # number of columns in maze
+ROWS = 40                  # number of rows in maze
+COLS = 80                  # number of columns in maze
 
 PUNCHES = (ROWS * COLS) * 0.1   # number of punches in wall after maze is generated
                            # (to create loops).
                          
-CELLWIDTH = 8             # assume each cell is a square
+CELLWIDTH = 16             # assume each cell is a square
 
 WALLWIDTH =  CELLWIDTH // 8 # Approximately CELLWIDTH/8
 if WALLWIDTH <= 1:

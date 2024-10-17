@@ -11,12 +11,12 @@ from SearchNode import SearchNode
 # There must be NO console printing in this python file. Make sure you remove
 # them or comment them out when you are done.
 #==============================================================================
-def graph_search(problem=None,
-                 Node=None,
-                 fringe=None,
-                 closed_list=None,
-                 view0=None,
+def graph_search(board       = None,
+                 fringe      = None,
+                 closed_list = None
                  ):
+    return None
+
     initial_state = problem.initial_state
     maze = problem.maze
     print(initial_state)

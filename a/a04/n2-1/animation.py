@@ -11,10 +11,8 @@ pygame.display.set_caption("N^2-1 Problem")
 
 tries = 0
 
-
 def row(matrix):
     return reduce(lambda x,y:x+y, matrix, [])
-
 
 def move(char, dir, matrix):
     """ This is used to create test cases. """
@@ -36,7 +34,6 @@ def move(char, dir, matrix):
         if c - 1 < 0: raise ValueError
         matrix[r][c-1], matrix[r][c] = matrix[r][c], matrix[r][c-1]    
     return matrix
-
 
 class Digit:
 
@@ -77,7 +74,6 @@ class Digit:
         self.__rect[0] = x1
         self.__rect[1] = y1
         self.draw()
-
 
 class Board:
 
@@ -130,14 +126,11 @@ class Board:
         surface.blit(image, (x,y))
         pygame.display.flip()
 
-    
-
 def rowcol(mat, target):
     for rownum, row in enumerate(mat):
         for colnum, col in enumerate(row):
             if col == target: return rownum, colnum
     raise ValueError("can't find %s" % target)
-
 
 def draw(mat=[['0','1','2'],['3','4','5'],['6','7',' ']],
          solution=['N','N','E','E'],
