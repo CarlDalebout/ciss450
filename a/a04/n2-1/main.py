@@ -34,9 +34,11 @@ solution = graph_search(board       = board,
                         fringe      = fringe,
                         closed_list = closed_list)
 
+print(rowcol(board.matrix, '5'))
+
 if solution == None:
     print("solution = None")
-    draw(board, solution)
+    draw(board.matrix, solution)
 
 else:
     print(f"solution: {solution}")

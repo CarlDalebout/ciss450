@@ -79,7 +79,7 @@ class Board:
 
     def __init__(self,matrix):
         import copy
-        self.__matrix = copy.deepcopy(matrix)
+        self.matrix = copy.deepcopy(matrix)
         self.__tries = 0
         max_row = len(matrix)
         max_col = len(matrix[0])
