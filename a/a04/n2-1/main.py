@@ -36,15 +36,10 @@ solution = graph_search(board       = board,
 
 print(rowcol(board.matrix, '5'))
 
-if solution == None:
-    print("solution = None")
-    draw(board.matrix, solution)
-
-else:
-    print(f"solution: {solution}")
-    print(f"len(Solution): {len(solution)}")
-    print(f"len(closed_list): {len(closed_list)}")
-    print(f"len(fringe): {len(fringe)}")
-    draw(board, solution)
+print(f"solution: {solution}")
+print(f"len(Solution): {len(solution)}")
+print(f"len(closed_list): {len(closed_list)}")
+print(f"len(fringe): {len(fringe)}")
+draw(board, solution)
 
 

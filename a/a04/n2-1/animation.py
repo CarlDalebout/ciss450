@@ -99,7 +99,7 @@ class Board:
                 return x
 
         s = "%10d.\n" % self.__tries
-        for row in self.__matrix:
+        for row in self.matrix:
             row = [ "%4s" % None_to_space(x) for x in row]
             s += "                %s\n" % ("".join(row))
         return s
@@ -109,12 +109,12 @@ class Board:
         x0,y0 = col*TILE_WIDTH, row
         x0,y0 = col*TILE_WIDTH, row*TILE_HEIGHT
         x1,y1 = newcol*TILE_WIDTH, newrow*TILE_HEIGHT
-        i = self.__matrix[newrow][newcol]
+        i = self.matrix[newrow][newcol]
         rect = [ newcol*TILE_WIDTH, newrow*TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT ]
         digit = Digit(i,FONT_SIZE, rect)
         digit.update([x1,y1,x0,y0])
-        self.__matrix[row][col] = self.__matrix[newrow][newcol]
-        self.__matrix[newrow][newcol] = None
+        self.matrix[row][col] = self.matrix[newrow][newcol]
+        self.matrix[newrow][newcol] = None
 
         self.__tries += 1
         text = str(self.__tries)
