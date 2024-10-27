@@ -5,7 +5,7 @@ import random
 from Fringe       import *
 from ClosedList   import *
 from Matrix       import *
-from animation    import *
+from pyboard      import *
 from functools    import reduce
 from graph_search import graph_search
 from SearchNode   import SearchNode
@@ -20,8 +20,8 @@ pygame.display.set_caption("n^2-1 Problem")
 
 n = int(input("size: "))
 mat = input("initial: ")
-board = Board(matrix(n, mat))
-
+board = Board(matrix(n, mat), n)
+print(board.matrix)
 fringe_type = input("bfs or dfs: ")
 if fringe_type == "bfs":
     fringe = FSQueue()
@@ -40,6 +40,4 @@ print(f"solution: {solution}")
 print(f"len(Solution): {len(solution)}")
 print(f"len(closed_list): {len(closed_list)}")
 print(f"len(fringe): {len(fringe)}")
-draw(board, solution)
-
-
+draw(board.matrix, solution)

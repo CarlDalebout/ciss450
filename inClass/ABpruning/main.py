@@ -63,45 +63,50 @@ def mm(s, player): # are you playing a max or min
         minimum_action = [action, a]
     return (minimum_action, minimum)
 
-def abmm(s, player, target = None, target_action = None):
+def abmm(s, player, alpha = [None, -999999], beta = [None, 999999]):
   if termial_test(s):
-    return (None, termial_value(s))
-
-  elif player in ["MAX", "max", "Max"]:
-    maximum = target
-    maximum_action = target_action
+    return(None, termial_value(s))
+  
+  elif player in ['MAX', 'Max', 'max']:
+    maximum = -99999999
+    maximum_action = None
     for action, state in successors(s):
-      action_value = abmm(state, "Min", maximum, maximum_action)
-      print(action_value)
+      action_value = abmm(state, "Min", alpha, beta)
       a, v = action_value
-      if maximum == None or v >= maximum:
-        maximum = v
-        maximum_action = [action, a]
-      else:
-        if target != None:
-          return (maximum_action, maximum)
-    return(maximum_action, maximum)
+      if v > maximum:
+          maximum = v
+          maximum_action = [action, a]
+      if maximum > alpha[1]:
+          alpha[1] = maximum
+          alpha[0] = maximum_action
+
+      if beta[1] <= alpha[1]:
+        print('skipping past', state)
+        break
+    return (maximum_action, maximum)
   
   else:
-    minimum = target
-    minimum_action = target_action
-    for action, state in successors(s):
-      action_value = abmm(state, "MAX", minimum, minimum_action)
-      print(action_value)
+    minimum = 99999999
+    minimum_action = None
+    for action , state in successors(s):
+      action_value = abmm(state, "Max", alpha, beta)
       a, v = action_value
-      if minimum == None or v <= minimum:
+      if minimum == None or v < minimum:
         minimum = v
         minimum_action = [action, a]
-      else:
-        if target != None:
-          return (minimum_action, minimum)
-    return(minimum_action, minimum)
-
+      if minimum > beta[1]:
+        beta[1] = minimum
+        beta[0] = minimum_action
+      if beta[1] <= alpha[1]:
+        print('skipping past', state)
+        break
+    return (minimum_action, minimum)
 
 if __name__ == "__main__":
   while 1:
     state = input("which state: ")
-    print(f"mm {state}, 'MAX'")
+
+    print(f"\nmm {state}, 'MAX'")
     ret = mm(state, "MAX")
     print(f"{ret}\n")
   

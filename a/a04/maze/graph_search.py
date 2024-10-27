@@ -12,7 +12,6 @@ from SearchNode import SearchNode
 # them or comment them out when you are done.
 #==============================================================================
 def graph_search(problem=None,
-                 Node=None,
                  fringe=None,
                  closed_list=None,
                  view0=None,

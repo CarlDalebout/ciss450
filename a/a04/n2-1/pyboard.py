@@ -77,8 +77,9 @@ class Digit:
 
 class Board:
 
-    def __init__(self,matrix):
+    def __init__(self,matrix,n):
         import copy
+        self.n = n
         self.matrix = copy.deepcopy(matrix)
         self.__tries = 0
         max_row = len(matrix)
@@ -103,7 +104,12 @@ class Board:
             row = [ "%4s" % None_to_space(x) for x in row]
             s += "                %s\n" % ("".join(row))
         return s
-        
+
+    def get_directions(self, rc):
+        dirs = []
+        for _ in ['N', 'S', 'E', 'W']:
+            pass
+
     def update(self,vector,matrix):
         row,col,newrow,newcol = vector
         x0,y0 = col*TILE_WIDTH, row
