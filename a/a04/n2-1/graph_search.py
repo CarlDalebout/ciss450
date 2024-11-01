@@ -11,13 +11,14 @@ from SearchNode import SearchNode
 # There must be NO console printing in this python file. Make sure you remove
 # them or comment them out when you are done.
 #==============================================================================
-def graph_search(board     = None, 
+def graph_search(board       = None,
+                 solution    = [[1,2,3],[4,5,6],[7,8, ]], 
                  fringe      = None,
                  closed_list = None
                  ):
-  initial_state = board
-  print(initial_state)
-  print('create function to get goal_state')
+  initial_state = board.matrix
+  print("initial_state: ", initial_state)
+  print('create function to get goal_state', solution)
   #==========================================================================
   # TODO: The code here creates a *random* solution starting at state (0,0).
   # Replace with the correct late version of graph search algorithm.

@@ -31,6 +31,7 @@ if fringe_type == "dfs":
 closed_list = SetClosedList()
 
 solution = graph_search(board       = board,
+                        # solution    = solved_state
                         fringe      = fringe,
                         closed_list = closed_list)
 
