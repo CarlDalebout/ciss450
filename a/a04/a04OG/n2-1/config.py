@@ -1,7 +1,5 @@
-import pygame
-
-DELAY = 2 # delay between each frame update
-SPEED = 1 # speed in pixels of digits
+DELAY = 0 # delay between each frame update
+SPEED = 2 # speed in pixels of digits
 # For faster animation, set DELAY to 0 and SPEED to 100
 
 TILE_WIDTH = 50
@@ -17,4 +15,5 @@ SIZE = (WIDTH,HEIGHT) = (n*TILE_WIDTH,(n+1)*(TILE_WIDTH))
 
 TRIES_COLOR = [0,255,0]
 
+import pygame
 TRIES_FONT = pygame.font.Font(None, int(0.8*FONT_SIZE))
