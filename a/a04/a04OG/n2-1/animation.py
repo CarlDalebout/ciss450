@@ -1,7 +1,6 @@
 import sys
 import copy
-from Matrix       import *
-from functools    import reduce
+from functools import reduce
 import pygame
 pygame.init()
 
@@ -14,6 +13,7 @@ tries = 0
 
 def row(matrix):
     return reduce(lambda x,y:x+y, matrix, [])
+
 
 def move(char, dir, matrix):
     """ This is used to create test cases. """
@@ -35,6 +35,7 @@ def move(char, dir, matrix):
         if c - 1 < 0: raise ValueError
         matrix[r][c-1], matrix[r][c] = matrix[r][c], matrix[r][c-1]    
     return matrix
+
 
 class Digit:
 
@@ -76,16 +77,17 @@ class Digit:
         self.__rect[1] = y1
         self.draw()
 
+
 class Board:
 
     def __init__(self,matrix):
         import copy
         self.__matrix = copy.deepcopy(matrix)
         self.__tries = 0
-        self.max_row = len(matrix)
-        self.max_col = len(matrix[0])
-        for r in range(self.max_row):
-            for c in range(self.max_col):
+        max_row = len(matrix)
+        max_col = len(matrix[0])
+        for r in range(max_row):
+            for c in range(max_col):
                 digit = matrix[r][c]
                 if digit!=None:
                     rect = [ c*TILE_WIDTH, r*TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT ]
@@ -104,54 +106,6 @@ class Board:
             row = [ "%4s" % None_to_space(x) for x in row]
             s += "                %s\n" % ("".join(row))
         return s
-        
-    def getmatrix(self):
-        return self.__matrix
-
-    def getactions(self, state):
-        '''
-            return ['N', 'S', ... ]
-        '''
-        m = matrix(self.max_col, state)
-        ret = []
-        for r, row in enumerate(m):
-            for c, v in enumerate(row):
-                if v == ' ':
-                    if r > 0:
-                        ret.append('N')
-                    if r < self.max_row - 1:
-                        ret.append('S') 
-                    if c < self.max_col - 1:
-                        ret.append('E')
-                    if c > 0:
-                        ret.append('W')
-                    break
-        return ret
-    
-    def getstate(self, matrix):
-        state = ''
-        dir = ''
-        for r in range(self.max_row):
-            for c in range(self.max_col):
-                state += (dir + matrix[r][c])
-                dir = ','
-        return state
-    
-    def getNewState(self, state, action):
-        mat = matrix(self.max_col, state)
-        r0, c0 = rowcol(mat, ' ')
-        r1, c1 = r0, c0
-        if action == 'N':
-            r1 -= 1
-        elif action == 'S':
-            r1 += 1
-        elif action == 'E':
-            c1 += 1
-        elif action == 'W':
-            c1 -= 1
-        mat[r0][c0] = mat[r1][c1]
-        mat[r1][c1] = ' '
-        return self.getstate(mat)
         
     def update(self,vector,matrix):
         row,col,newrow,newcol = vector

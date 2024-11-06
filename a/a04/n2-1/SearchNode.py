@@ -5,6 +5,7 @@ class SearchNode:
                  parent=None,
                  parent_action=None,
                  path_cost=0):
+        
         self.state = state
         self.parent = parent
         self.parent_action = parent_action
