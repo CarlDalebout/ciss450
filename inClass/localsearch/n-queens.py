@@ -1,7 +1,7 @@
 import random; random.seed()
 import copy
 
-n = 5
+n = 30
 
 def empty(n):
   return [[' ' for _ in range(n)] for _ in range(n)]
@@ -67,25 +67,89 @@ def actions(m):
   return ret
 
 def solve():
-  """ Solve useing SA """
+  """ Solve useing SA and Hill Climbing"""
   
   m = rand_state(n)
-  obj = h(m)
+  # best_state = [m] # (a,b)  = (action, state)
+  best_h = h(m)
+  print(best_h)
   printBoard(m)
-  print(obj)
 
-  while 1:
-    as_ = actions(m)
-    action = random.choice(as_)
-    print("action:", action)
+  # hc ... go over all succ and pick the best
+
+  t = 0
+  a = 1
+  while 1:  
+    """ HC
+    improve = False
+    for action in actions(m):
+      (r, c), dc = action
+      m0 = copy.deepcopy(m)
+      m0[r][c] = ' '
+      m0[r][c + dc] = 'Q'
+      obj0 = h(m0)
+      if obj0 == best_h:
+        best_state.append(m0)
+      elif obj0 < best_h:
+        improve = True
+        best_h = obj0
+        best_state = [m0]
+      else: 
+        pass # dont consider a bad option
+    
+    if not improve:
+      break
+    else:
+      m = random.choice(best_state)
+      printBoard(m)
+      print(best_h)
+    
+    input("? ")
+    """
+    # Simulater Annealing
+    actions_ = actions(m)
+    if len(actions_) == 0:
+      break
+    action = random.choice(actions_)
+    m0 = action
     (r, c), dc = action
     m0 = copy.deepcopy(m)
     m0[r][c] = ' '
     m0[r][c + dc] = 'Q'
     obj0 = h(m0)
-    printBoard(m0)
-    print(obj0)
-    break
+
+    # now we have m.best_h and m0 .obj0
+    if obj0 < best_h:
+      m = m0
+      best_h = obj0
+    else:
+      x = random.uniform(0.0, 1.0)
+      if x < a: # initially a = 1.0, 0.6, 0.4, 0.3, 0.2, ...
+        m = m0
+        best_h = obj0
+      # get random r in [0,1] as time goes on [0, a] accept and 
+      # a -> 0 as t -> in
+      pass
+
+    printBoard(m)
+    print(best_h)
+
+
+    input("? ")
+    t += 1
+    a = a / t
+    """
+      action = random.choice(as_)
+      print("action:", action)
+      (r, c), dc = action
+      m0 = copy.deepcopy(m)
+      m0[r][c] = ' '
+      m0[r][c + dc] = 'Q'
+      obj0 = h(m0)
+      printBoard(m0)
+      print(obj0)
+      break
+    """
 
 if __name__ == "__main__":
   solve()
