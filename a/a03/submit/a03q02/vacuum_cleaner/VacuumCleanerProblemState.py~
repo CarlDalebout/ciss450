@@ -1,0 +1,19 @@
+from State import State
+
+class VacuumCleanerProblemState(State):
+    def __init__(self, value):
+        # value = (a,b) where a is an VacuumCleanerRobotState,
+        # b is a RoomState
+        State.__init__(self, value)
+        VacuumCleanerProblemState.check(value)
+        
+    @staticmethod
+    def check(value):
+        agent_state, room_state = value
+        if not isinstance(agent_state, VacuumCleanerProblemState):
+            raise Exception("Invalid value %s" % \
+                            agent_state)
+        if not isinstance(room_state, RoomState):
+            raise Exception("Invalid RoomState value %s" % \
+                            room_state)
+

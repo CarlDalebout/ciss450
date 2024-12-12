@@ -1,0 +1,24 @@
+import sys;
+sys.path.append('../ai/')
+sys.path.append('../')
+from agent.State import State
+from vacuum_cleaner.VacuumCleanerRobotState import VacuumCleanerRobotState
+from vacuum_cleaner.RoomState import RoomState
+
+class VacuumCleanerRobotProblemState(State):
+    def __init__(self, value):
+        # value = (a,b) where a is an VacuumCleanerRobotState,
+        # b is a RoomState
+        State.__init__(self, value)
+        VacuumCleanerRobotProblemState.check(value)
+        
+    @staticmethod
+    def check(value):
+        agent_state, room_state = value
+        if not isinstance(agent_state, VacuumCleanerRobotState):
+            raise Exception("Invalid value %s" % \
+                            agent_state)
+        if not isinstance(room_state, RoomState):
+            raise Exception("Invalid RoomState value %s" % \
+                            room_state)
+

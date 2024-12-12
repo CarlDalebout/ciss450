@@ -1,0 +1,2 @@
+run:
+	python animation.py

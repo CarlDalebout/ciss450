@@ -1,0 +1,47 @@
+import sys
+sys.path.append('../')
+sys.path.append('../ai/')
+import agent.State 
+import GLOBALS
+
+class VacuumCleanerRobotState(agent.State.State):
+    def __init__(self, value):
+        agent.State.State.__init__(self, value)
+        VacuumCleanerRobotState.check(value)
+        
+    @staticmethod
+    def check(value):
+        #print 'WARNING: NO CHECK IN VACUUMCLEANERSTATE'
+        if value not in GLOBALS.ROOMS:
+            raise ValueError("Invalid value %s" % value)
+
+
+if __name__ == '__main__':
+    raise NotImplementedError
+    print "Testing RoomState"
+    for value in ['Clean', 'Dirty']:
+        try:
+            s = RoomState(value)
+            print "pass"
+            for value in ['Clean', 'Dirty']:
+                try:
+                    s.value = value
+                    print "pass"
+                except:
+                    print "FAIL"
+            for value in ['A', 'B']:
+                try:
+                    s.value = value
+                    print "FAIL"
+                except:
+                    print "pass"
+        except:
+            raise
+            print "FAIL"
+        
+    for value in ['A', 'B']:
+        try:
+            s = RoomState(value)
+            print "FAIL"
+        except:
+            print "pass"
